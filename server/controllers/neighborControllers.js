@@ -6,20 +6,60 @@ const neighborControllers = {};
 // email addresses will 100% be provided during login whereas we weren't sure if the unique id that mongo creates would be available when getConsumers is called
 // if id is available, should probably switch to that
 // get request to get consumer data needs to be an object containing the property email and the user email you're looking to get back
-neighborControllers.getConsumers = async (req, res, next) => {
-  try {
-    res.locals.consumers = await Consumers.find({
-      email: req.params.email,
-    }).exec();
-    console.log('stored consumer: ', res.locals.consumers);
-    return next();
-  } catch (err) {
-    return next({
-      log: `Error occured in getConsumers middleware, ${err}`,
-      status: 400,
-      message: { err: 'An error occurred when getting consumer data' },
+// neighborControllers.getConsumers = async (req, res, next) => {
+//   try {
+//     res.locals.consumers = await Consumers.find({
+//       email: req.params.email,
+//     }).exec();
+//     console.log('stored consumer: ', res.locals.consumers);
+//     return next();
+//   } catch (err) {
+//     return next({
+//       log: `Error occured in getConsumers middleware, ${err}`,
+//       status: 400,
+//       message: { err: 'An error occurred when getting consumer data' },
+//     });
+//   }
+// };
+
+neighborControllers.verifyConsumers = (req, res, next) => {
+  console.log(`ENTERED VERIFY:  `);
+  const { password, email } = req.body;
+
+  Consumers.findOne({ email: `${email}` })
+    .then((doc) => {
+      // if username doesn't exist, send to sign up
+      if (!doc) {
+        // ASK FRONT END ABOUT REROUTING BAD SIGN UP
+        return res.redirect('/CreateAcct');
+      }
+      // check password
+      bcrypt
+        .compare(password, doc.password)
+        .then((result) => {
+          if (!result) {
+            // ASK FRONT END ABOUT REROUTING BAD SIGN UP
+            return res.redirect('/LoginPage');
+          } else {
+            res.locals.consumers = doc;
+            return next();
+          }
+        })
+        .catch((err) => {
+          next({
+            log: err,
+            message: {
+              err: 'error in comparing hash of userController.verifyUser',
+            },
+          });
+        });
+    })
+    .catch((err) => {
+      next({
+        log: err,
+        message: { err: 'error in userController.verifyUser' },
+      });
     });
-  }
 };
 
 // define controller for creating users (use .create)
