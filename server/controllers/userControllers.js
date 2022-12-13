@@ -87,7 +87,7 @@ userControllers.createUser = ({ body }, res, next) => {
 userControllers.deleteUser = async (req, res, next) => {
   try {
     console.log('REQ.PARAMS', req.params);
-    await Users.deleteOne({ email: req.params._email }).exec();
+    await User.deleteOne({ email: req.params._email }).exec();
     return next();
   } catch (err) {
     return next({
