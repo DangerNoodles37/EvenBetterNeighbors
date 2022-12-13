@@ -21,7 +21,7 @@ mongoose
 
 // declare mongo schema for our consumers
 // zip code will be a string since we don't need to work with numbers
-const consumersSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true },
@@ -29,7 +29,7 @@ const consumersSchema = new mongoose.Schema({
   zipCode: { type: String },
 });
 
-consumersSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
   const user = this;
   bcrypt
     .hash(user.password, SALT_WORK_FACTOR)
@@ -50,4 +50,4 @@ consumersSchema.pre('save', function (next) {
 });
 
 // export the module
-module.exports = mongoose.model('consumers', consumersSchema);
+module.exports = mongoose.model('user', userSchema);
