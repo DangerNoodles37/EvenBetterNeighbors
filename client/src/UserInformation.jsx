@@ -7,16 +7,16 @@ import { useHistory } from 'react-router-dom';
 function UserInformation({dummyEmail}) {
 
   const [data, setData] = useState([]);
-  const [consumerFirstName, setConsumerFirstName] = useState('');
-  const [consumerLastName, setConsumerLastName] = useState(''); 
-  const [consumerPassword, setConsumerPassword] = useState('');
-  const [consumerZipCode, setConsumerZipCode] = useState('');
-  const [consumerEmail, setConsumerEmail] = useState(''); 
+  const [userFirstName, setUserFirstName] = useState('');
+  const [userLastName, setUserLastName] = useState(''); 
+  const [userPassword, setUserPassword] = useState('');
+  const [userZipCode, setUserZipCode] = useState('');
+  const [userEmail, setUserEmail] = useState(''); 
   const [loaded, setLoaded] = useState(false);
   const history = useHistory();
 
   function handleUpdateForm() {
-   // logic to update user information goes here. the consumer is identified with an email passed in as params (since emails are unique) but can also be modified to take an id. the backend code is written to grab a key value pair (what property needs to be updated and with what value). It'll update just that value. 
+   // logic to update user information goes here. the user is identified with an email passed in as params (since emails are unique) but can also be modified to take an id. the backend code is written to grab a key value pair (what property needs to be updated and with what value). It'll update just that value. 
   }
 
   // take you to search for merchants
@@ -61,8 +61,8 @@ function deleteAcct () {
               <input className = 'firstNameLabel'
                 type='text'
                 name='username'
-                value={consumerFirstName}
-                onChange={(event) => setConsumerFirstName(event.target.value)}
+                value={userFirstName}
+                onChange={(event) => setUserFirstName(event.target.value)}
               />
             <input id='formButton' type='submit' value='update' />
            
@@ -74,8 +74,8 @@ function deleteAcct () {
               <input className = 'lastNameLabel'
                 type='text'
                 name='password'
-                value={consumerLastName}
-                onChange={(event) => setConsumerLastName(event.target.value)}
+                value={userLastName}
+                onChange={(event) => setUserLastName(event.target.value)}
               />
             <input id='formButton' type='submit' value='update' />
           </form>
@@ -86,8 +86,8 @@ function deleteAcct () {
               <input 
                 type='text'
                 name='email'
-                value={consumerEmail}
-                onChange={(event) => setConsumerEmail(event.target.value)}
+                value={userEmail}
+                onChange={(event) => setUserEmail(event.target.value)}
               />
             </label>
             <input id='formButton' type='submit' value='update' />
@@ -99,8 +99,8 @@ function deleteAcct () {
               <input 
                 type='text'
                 name='username'
-                value={consumerPassword}
-                onChange={(event) => setConsumerPassword(event.target.value)}
+                value={userPassword}
+                onChange={(event) => setUserPassword(event.target.value)}
               />
             </label>
             <input id='formButton' type='submit' value='update' />
@@ -111,8 +111,8 @@ function deleteAcct () {
               <input 
                 type='text'
                 name='username'
-                value={consumerZipCode}
-                onChange={(event) => setConsumerZipCode(event.target.value)}
+                value={userZipCode}
+                onChange={(event) => setUserZipCode(event.target.value)}
               />
             </label>
 

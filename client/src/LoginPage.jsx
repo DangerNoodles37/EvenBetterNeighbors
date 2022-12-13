@@ -5,16 +5,16 @@ import { useHistory } from 'react-router-dom';
 function LoginPage() {
   const history = useHistory();
 
-  // state for consumer values
-  const [consumerEmailLogin, setConsumerEmailLogin] = useState('');
-  const [consumerPasswordLogin, setConsumerPasswordLogin] = useState('');
+  // state for user values
+  const [userEmailLogin, setUserEmailLogin] = useState('');
+  const [userPasswordLogin, setUserPasswordLogin] = useState('');
 
   // state for merchant values
   const [merchantEmailLogin, setMerchantEmailLogin] = useState('');
   const [merchantPasswordLogin, setMerchantPasswordLogin] = useState('');
 
-  function handleConsumerLogin() {
-    // logic for consumers logging in should go here. 
+  function handleUserLogin() {
+    // logic for users logging in should go here. 
     // currently redirects to landing page
     history.push('/landing')
   }
@@ -29,39 +29,39 @@ function LoginPage() {
         <h2 className='login'>login</h2>
       </div>
       <div className='loginContainer'>
-        {/* hold both consumer and merchant login */}
+        {/* hold both user and merchant login */}
         <div className='consMerchContainer'>
-          {/* consumer login */}
-          <div className='consumerLogin'>
-            <div className='consumerAlignment'>
-              <strong>consumer</strong>
+          {/* user login */}
+          <div className='userLogin'>
+            <div className='userAlignment'>
+              <strong>user</strong>
             </div>
             <br />
 
-            <form className='consumerForm' onSubmit={handleConsumerLogin}>
+            <form className='userForm' onSubmit={handleUserLogin}>
               <div className='userLogin'>
-                <label htmlFor='consumerEmailLogin'>
+                <label htmlFor='userEmailLogin'>
                   email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input
                     type='text'
-                    id='consumerEmailLogin'
-                    value={consumerEmailLogin}
+                    id='userEmailLogin'
+                    value={userEmailLogin}
                     onChange={(event) =>
-                      setConsumerEmailLogin(event.target.value)
+                      setUserEmailLogin(event.target.value)
                     }
                   />
                 </label>
               </div>
 
               <div className='userPW'>
-                <label htmlFor='consumerPasswordLogin'>
+                <label htmlFor='userPasswordLogin'>
                   password:
                   <input
                     type='text'
-                    id='consumerPasswordLogin'
-                    value={consumerPasswordLogin}
+                    id='userPasswordLogin'
+                    value={userPasswordLogin}
                     onChange={(event) => {
-                      setConsumerPasswordLogin(event.target.value);
+                      setUserPasswordLogin(event.target.value);
                     }}
                   />
                 </label>
