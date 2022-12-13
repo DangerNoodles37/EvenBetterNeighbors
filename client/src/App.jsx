@@ -19,7 +19,6 @@ function App() {
       // Currently, the email gets stored in state upon creation of an account and using the email in state, the user information is populated. 
   const [defaultEmail, setDefaultEmail] = useState(''); 
 
-
   // Routes defined below for pages 
   // Prop driling the props for email in User Information and Create Account
     // Should also be in login page but ran out of time 

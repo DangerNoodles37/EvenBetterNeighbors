@@ -4,57 +4,9 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function CreateAcct({ setDefaultEmail, defaultEmail }) {
-  useEffect(() => {}, [defaultEmail]);
-  // State for consumer
-  // These values get sent to the MongoDb
-  // Passwords are currently not encrypted using BCrypt
-
-  const [consumerPassword, setConsumerPassword] = useState('');
-  const [consumerEmail, setConsumerEmail] = useState('');
-  const [consumerFirstName, setConsumerFirstName] = useState('');
-  const [consumerLastName, setConsumerLastName] = useState('');
-  const [consumerZipCode, setConsumerZipCode] = useState('');
-
-  // State for merchant values
-  // Currently not set up in the backend.
-  const [merchantPassword, setMerchantPassword] = useState('');
-  const [businessName, setBusinessName] = useState('');
-  const [typeOfBusiness, setTypeOfBusiness] = useState('');
-  const [businessAddress, setBusinessAddress] = useState('');
-  const [businessZipCode, setBusinessZipCode] = useState('');
-  const [businessEmail, setBusinessEmail] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
 
   const history = useHistory();
-
-  function handleConsumerFormSubmit(event) {
-    event.preventDefault();
-    setDefaultEmail(consumerEmail);
-
-    // Axios request to send user information to our backend
-    axios
-      .post('http://localhost:3000/api', {
-        body: {
-          firstName: consumerFirstName,
-          lastName: consumerLastName,
-          email: consumerEmail,
-          password: consumerPassword,
-          zipCode: consumerZipCode,
-        },
-      })
-      .then(
-        // Routes to the landing page upon login
-        // Using history.push since it doesn't force a refresh which would get rid of our ability to store the email address persisting in state to load the user data
-        history.push('/landing')
-      );
-  }
-
-  function handleMerchantFormSubmit(event) {
-    event.preventDefault();
-    // Axios logic for handling merchant user creation should go here. 
-  }
-
+  
   // Spacing below was done using manual spacers. Should be done via divs in SCSS. 
 
   return (
@@ -64,72 +16,44 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
         <h2 className='createAccount'>creating an account is easy</h2>
       </div>
 
-      {/* hold both consumer and merchant login */}
+      {/* hold both user and merchant login */}
       <div className='loginContainer'>
         <div className='consMerchContainer'>
-          {/* consumer login */}
+          {/* user login */}
           <section className='formSection'>
-            {/* header for consumer login */}
-            <div className='consumerAlignment'>
-              <strong>consumer</strong>
+            {/* header for user login */}
+            <div className='userAlignment'>
+              <strong>User</strong>
             </div>
             <br></br>
 
-            {/* form for consumer */}
-            <form onSubmit={handleConsumerFormSubmit}>
-              <label>
-                first name:
-                <input
-                  type='text'
-                  name='firstName'
-                  value={consumerFirstName}
-                  onChange={(event) => setConsumerFirstName(event.target.value)}
-                />
-              </label>
+            {/* TEMPLATE HERE */}
+              {/* <label htmlFor='firstName' >last name: </label>
+              <input type='text' name='firstName' id='firstName'/> */}
+            {/* TEMPLATE END HERE */}
+
+            {/* form for user */}
+            {/* ADD STYLING CLASSNAMES BACK IN LATER */}
+            <form method='POST' action='http://localhost:3000/api/createuser'>
+              <label htmlFor='firstName' >First Name: </label>
+              <input type='text' name='firstName' id='firstName'/>
+              <br />
+              
+              <label htmlFor='lastName' >Last Name: </label>
+              <input type='text' name='lastName' id='lastName'/>
               <br />
 
-              <label>
-                last name:
-                <input
-                  type='text'
-                  name='lastName'
-                  value={consumerLastName}
-                  onChange={(event) => setConsumerLastName(event.target.value)}
-                />
-              </label>
+              <label htmlFor='userEmail' >Email: </label>
+              <input type='text' name='userEmail' id='userEmail'/>
               <br />
 
-              <label>
-                email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='consumeremail'
-                  value={consumerEmail}
-                  onChange={(event) => setConsumerEmail(event.target.value)}
-                />
-              </label>
+              <label htmlFor='userPassword' >Password: </label>
+              {/* CHANGE TYPE TO PASSWORD ONCE DONE W TESTING AND DEVELOPMEN */}
+              <input type='password' name='userPassword' id='userPassword'/>
               <br />
 
-              <label>
-                password:
-                <input
-                  type='text'
-                  name='password'
-                  value={consumerPassword}
-                  onChange={(event) => setConsumerPassword(event.target.value)}
-                />
-              </label>
-              <br />
-
-              <label>
-                zip code:&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='consumerZipCode'
-                  value={consumerZipCode}
-                  onChange={(event) => setConsumerZipCode(event.target.value)}
-                />
-              </label>
+              <label htmlFor='userZipCode' >Zip Code: </label>
+              <input type='text' name='userZipCode' id='userZipCode'/>
               <br />
 
               <input id='formButton' type='submit' value='submit' />
@@ -138,100 +62,44 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
           {/* merchant login */}
           <div className='merchantLogin'>
-            {/* header for consumer login */}
+            {/* header for user login */}
             <div className='merchantAlignment'>
-              <strong>merchant</strong>
+              <strong>Merchant</strong>
             </div>
             <br></br>
 
-            <form onSubmit={handleMerchantFormSubmit}>
-              <label>
-                email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='email'
-                  value={businessEmail}
-                  onChange={(event) => setBusinessEmail(event.target.value)}
-                />
-              </label>
+            <form method='POST' action='http://localhost:3000/api/createmerchant'>
+              <label htmlFor='businessEmail' >Email: </label>
+              <input type='text' name='businessEmail' id='businessEmail'/>
               <br />
 
-              <label>
-                password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='password'
-                  value={merchantPassword}
-                  onChange={(event) => setMerchantPassword(event.target.value)}
-                />
-              </label>
+              <label htmlFor='merchantPassword' >Password: </label>
+              {/* CHANGE TYPE TO PASSWORD AFTER TESING AND DEVELOPMEN */}
+              <input type='password' name='merchantPassword' id='merchantPassword'/>
               <br />
 
-              <label>
-                business name:&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='businessname'
-                  value={businessName}
-                  onChange={(event) => setBusinessName(event.target.value)}
-                />
-              </label>
+              <label htmlFor='businessName' >Business Name: </label>
+              <input type='text' name='businessName' id='businessName'/>
               <br />
 
-              <label>
-                type of business:
-                <input
-                  type='text'
-                  name='typeofbusiness'
-                  value={typeOfBusiness}
-                  onChange={(event) => setTypeOfBusiness(event.target.value)}
-                />
-              </label>
+              <label htmlFor='typeOfBusiness' >Business Type: </label>
+              <input type='text' name='typeOfBusiness' id='typeOfBusiness'/>
               <br />
 
-              <label>
-                address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='businessaddress'
-                  value={businessAddress}
-                  onChange={(event) => setBusinessAddress(event.target.value)}
-                />
-              </label>
+              <label htmlFor='businessAddress' > Address: </label>
+              <input type='text' name='businessAddress' id='businessAddress'/>
               <br />
 
-              <label>
-                zip
-                code:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='businesszipcode'
-                  value={businessZipCode}
-                  onChange={(event) => setBusinessZipCode(event.target.value)}
-                />
-              </label>
+              <label htmlFor='businessZipCode' >Zip Code: </label>
+              <input type='text' name='businessZipCode' id='businessZipCode'/>
               <br />
 
-              <label>
-                description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='description'
-                  value={description}
-                  onChange={(event) => setDescription(event.target.value)}
-                />
-              </label>
+              <label htmlFor='description' >Description: </label>
+              <input type='text' name='description' id='description'/>
               <br />
 
-              <label>
-                image:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input
-                  type='text'
-                  name='image'
-                  value={image}
-                  onChange={(event) => setImage(event.target.value)}
-                />
-              </label>
+              <label htmlFor='image' >Image: </label>
+              <input type='text' name='image' id='image'/>
               <br />
               <input id='formButton' type='submit' value='submit' />
               <br />
