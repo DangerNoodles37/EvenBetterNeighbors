@@ -4,6 +4,8 @@ const path = require('path');
 const PORT = 3000;
 const apiRouter = require('./routes/api');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const MONGO_URI =
   'mongodb+srv://dangernoodles:V7ffVtFnMNGR4W8g@cluster0.yjnm2wn.mongodb.net/?retryWrites=true&w=majority';
@@ -25,15 +27,14 @@ mongoose
 // parses JSON from incoming request
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(cors());
 
 // handle requests for static files
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 // define route handlers
-app.use('/api', apiRouter, (req, res) => {
-  return res.status(200).send(res.locals.consumers);
-});
+app.use('/', apiRouter);
 
 // define catch all error handler
 app.get('*', (req, res) => {
