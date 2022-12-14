@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 
 function Team() {
   return (
-    <div className='teamPage'>
+    <div className='teamPage' data-testid='team'>
       <div>
         <NavBar />
       </div>

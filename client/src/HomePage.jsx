@@ -15,7 +15,7 @@ function HomePage() {
   }
 
   return (
-    <div className='homeContainer'>
+    <div className='homeContainer' data-testid='homeContainer'>
       <div className='leftInterface'>
         <img
           className='leftImage'

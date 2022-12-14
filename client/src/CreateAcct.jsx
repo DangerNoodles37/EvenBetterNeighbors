@@ -4,14 +4,13 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function CreateAcct({ setDefaultEmail, defaultEmail }) {
-
-  const history = useHistory();
+  const history = useHistory(); 
 
   const handleSetDefaultEmail = () => {
     event.preventDefault()
     
     console.log('Create User Button Clicked')
-    // setDefaultEmail(event.target[2].value)
+    setDefaultEmail(event.target[2].value)
   }
   // Spacing below was done using manual spacers. Should be done via divs in SCSS. 
 
@@ -77,7 +76,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
             </div>
             <br></br>
 
-            <form method='POST' action='http://localhost:3000/api/createMerchant'>
+            <form method='POST' action='http://localhost:3000/createMerchant'>
               <label htmlFor='businessEmail' >Email: </label>
               <input type='text' name='businessEmail' id='businessEmail'/>
               <br />
@@ -108,7 +107,8 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
               <br />
 
               <label htmlFor='image' >Image: </label>
-              <input type='text' name='image' id='image'/>
+              <input type='text' name='image' id='image' />
+
               <br />
               <input id='formButton' type='submit' value='submit' />
               <br />

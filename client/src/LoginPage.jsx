@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import { useHistory } from 'react-router-dom';
 
-function LoginPage() {
+function LoginPage(props) {
   const history = useHistory();
   // USE USE NAVIGTE INSTEAD OF HISTORY
   // const navigate = useNavigate()
@@ -18,14 +18,42 @@ function LoginPage() {
   function handleUserLogin() {
     // logic for users logging in should go here. 
     // currently redirects to landing page
-    history.push('/landing')
+    event.preventDefault()
+    const userAuthBody = {
+      email: event.target[0].value,
+      password: event.target[1].value
+    }
+
+    console.log('User Name Body We Are Sending to Back End: ', userAuthBody)
     // make an axios post or get request to the URL connecting to auth stuff
+    // axios({
+    //   method: 'get',
+    //   url: 'http://localhost:3000/userLogin',
+    //   withCredentials: true,
+    // })
+    //   .then((responseData) => {
+    // in the .then, we need to fire a needMerchantData useState callback in order to fire a useEffect Hook which renders merchants
+    props.setNeedMerchatData(props.needMerchantData)
+      //.catch((err) => {
+            //  redirect to login page
+      //  })
+      // 
+      
+    // })
     // .then, redirect to the landing page USING THE USENAVIGATE HOOK
+    // history.push('/landing')
   }
 
   function handleMerchantLogin() {
-    // logic for merchants logging in should go here
+    event.preventDefault()
+    // logic for merchants logging inHI THERE TRABLINK should go here
+    // create a new object containing the user email and password bodies
+    const merchantAuthBody = {
+      email: event.target[0].value,
+      password: event.target[1].value
+    }
 
+    console.log('User Name Body We Are Sending to Back End: ', merchantAuthBody)
     // axios({
     // })
   }
@@ -34,7 +62,7 @@ function LoginPage() {
     <div>
       <NavBar />
       <div>
-        <h2 className='login'>Login</h2>
+        <h2 className='login'>LoginUniqueWord</h2>
       </div>
       <div className='loginContainer'>
         {/* hold both user and merchant login */}
@@ -70,8 +98,8 @@ function LoginPage() {
               {/* USER PASSWORD INPUT */}
               <div className='userPW'>
 
-                <label htmlFor='userPasswordLogin' >Email: </label>
-                <input type='text' name='userPasswordLogin' id='userPasswordLogin' />
+                <label htmlFor='userPasswordLogin' >Password: </label>
+                <input type='password' name='userPasswordLogin' id='userPasswordLogin' />
 
                 {/* <label htmlFor='userPasswordLogin'>
                   Password:
@@ -86,7 +114,7 @@ function LoginPage() {
                 </label> */}
 
               </div>
-              <input id='formButton' type='submit' value='submit' />
+              <input name='userSubmit' id='formButton' type='submit' value='submit' />
             </form>
           </div>
 
@@ -97,9 +125,14 @@ function LoginPage() {
             </div>
             <br />
             <form className='merchantForm' onSubmit={handleMerchantLogin}>
+              
+              {/* MERCHANT EMAIL LOGIN */}
               <div className='merchantUsername'>
-                <label htmlFor='merchantUsernameLogin'>
 
+                <label htmlFor='merchantUsernameLogin' >Email: </label>
+                <input type='text' name='merchantUsernameLogin' id='merchantUsernameLogin' />
+
+                {/* <label htmlFor='merchantUsernameLogin'>
                   Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input 
                 type='text' 
@@ -109,11 +142,16 @@ function LoginPage() {
                   setMerchantEmailLogin(event.target.value)
                 }}
                 />
-
-                </label>
+                </label> */}
               </div>
+
+              {/* MERCHANT PASSWORD LOGIN */}
               <div className='merchantPassword'>
-                <label htmlFor='merchantPasswordLogin'>
+
+                <label htmlFor='merchantPasswordLogin' >Password: </label>
+                <input type='password' name='merchantPasswordLogin' id='merchantPasswordLogin' />
+
+                {/* <label htmlFor='merchantPasswordLogin'>
                   Password:
                   <input
                     type='text'
@@ -123,9 +161,11 @@ function LoginPage() {
                       setMerchantPasswordLogin(event.target.value);
                     }}
                   />
-                </label>
+                </label> */}
+
               </div>
-              <input id='formButton' type='submit' value='submit' />
+
+              <input name='merchantSubmit' id='formButton' type='submit' value='submit' />
             </form>
           </div>
         </div>

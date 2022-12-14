@@ -4,7 +4,8 @@ import MerchantCards from './merchantCards';
 
 // Imported mock data from MerchantCards.jsx
 // Created a form and button to search for merchants by zip codes. 
-function LandingPage() {
+function LandingPage(props) {
+  console.log('LANDING PAGE props: ', props)
   const [searchZipcode, setSearchZipcode] = useState(''); 
 
   return (
@@ -27,7 +28,7 @@ function LandingPage() {
 
         </div>
       <section className='merchantWrapper'>
-      <MerchantCards searchZipcode={searchZipcode} />
+      <MerchantCards merchantData={props.merchantData} searchZipcode={searchZipcode} />
     </section>
     </div>
   );

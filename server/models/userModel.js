@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
+
 // const MONGO_URI =
 //   'mongodb+srv://chase:codesmith123@cluster0.fwje3ts.mongodb.net/?retryWrites=true&w=majority';
 // //!!eventually we may need to move the database into server.js
@@ -18,6 +19,7 @@ const SALT_WORK_FACTOR = 10;
 //   })
 //   .then(() => console.log('Connected to Mongo DB.'))
 //   .catch((err) => console.log(err));
+
 
 // declare mongo schema for our consumers
 // zip code will be a string since we don't need to work with numbers
