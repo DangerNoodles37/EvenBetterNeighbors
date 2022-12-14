@@ -6,7 +6,13 @@ import axios from 'axios';
 function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
   const history = useHistory();
-  
+
+  const handleSetDefaultEmail = () => {
+    event.preventDefault()
+    
+    console.log('Create User Button Clicked')
+    // setDefaultEmail(event.target[2].value)
+  }
   // Spacing below was done using manual spacers. Should be done via divs in SCSS. 
 
   return (
@@ -34,6 +40,9 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
             {/* form for user */}
             {/* ADD STYLING CLASSNAMES BACK IN LATER */}
+
+           
+
             <form method='POST' action='http://localhost:3000/api/createUser'>
               <label htmlFor='firstName' >First Name: </label>
               <input type='text' name='firstName' id='firstName'/>
