@@ -34,7 +34,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
             {/* form for user */}
             {/* ADD STYLING CLASSNAMES BACK IN LATER */}
-            <form method='POST' action='http://localhost:3000/api/createuser'>
+            <form method='POST' action='http://localhost:3000/api/createUser'>
               <label htmlFor='firstName' >First Name: </label>
               <input type='text' name='firstName' id='firstName'/>
               <br />
@@ -68,7 +68,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
             </div>
             <br></br>
 
-            <form method='POST' action='http://localhost:3000/api/createmerchant'>
+            <form method='POST' action='http://localhost:3000/api/createMerchant'>
               <label htmlFor='businessEmail' >Email: </label>
               <input type='text' name='businessEmail' id='businessEmail'/>
               <br />
