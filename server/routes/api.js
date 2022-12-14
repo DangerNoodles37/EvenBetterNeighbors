@@ -32,17 +32,15 @@ router.patch('/update', userControllers.updateUser, (req, res) => {
 
 //merchant side routers
 
-router.get(
-  '/merchant/merchantLogin',
-  merchantControllers.verifyMerchant,
-  (req, res) => {
-    res.status(200).json(res.locals.merchant);
-  }
-);
+// ADD LIST OF ALL MERCHANTS
+
+router.get('/merchantLogin', merchantControllers.verifyMerchant, (req, res) => {
+  res.status(200).json(res.locals.merchant);
+});
 
 //create consumers route is now going to createConsumer
 router.post(
-  '/merchant/createMerchant',
+  '/createMerchant',
   merchantControllers.createMerchant,
   (req, res) => {
     res.status(200);
