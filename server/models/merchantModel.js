@@ -10,7 +10,7 @@ const merchantSchema = new mongoose.Schema({
   typeOfBusiness: { type: String, required: true },
   businessAddress: { type: String },
   businessZipCode: { type: String },
-  description: { String },
+  description: { type: String },
   image: { type: Buffer },
 });
 
