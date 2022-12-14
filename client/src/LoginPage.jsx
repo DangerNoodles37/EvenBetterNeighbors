@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 
 function LoginPage() {
   const history = useHistory();
+  // USE USE NAVIGTE INSTEAD OF HISTORY
+  // const navigate = useNavigate()
 
   // state for user values
   const [userEmailLogin, setUserEmailLogin] = useState('');
@@ -17,16 +19,22 @@ function LoginPage() {
     // logic for users logging in should go here. 
     // currently redirects to landing page
     history.push('/landing')
+    // make an axios post or get request to the URL connecting to auth stuff
+    // .then, redirect to the landing page USING THE USENAVIGATE HOOK
   }
 
   function handleMerchantLogin() {
     // logic for merchants logging in should go here
+
+    // axios({
+    // })
   }
+
   return (
     <div>
       <NavBar />
       <div>
-        <h2 className='login'>login</h2>
+        <h2 className='login'>Login</h2>
       </div>
       <div className='loginContainer'>
         {/* hold both user and merchant login */}
@@ -34,14 +42,19 @@ function LoginPage() {
           {/* user login */}
           <div className='userLogin'>
             <div className='userAlignment'>
-              <strong>user</strong>
+              <strong>User</strong>
             </div>
             <br />
-
+            {/* USER LOGIN FORM GOES HERE */}
             <form className='userForm' onSubmit={handleUserLogin}>
               <div className='userLogin'>
-                <label htmlFor='userEmailLogin'>
-                  email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                {/* USER EMAIL INPUT */}
+                <label htmlFor='userEmailLogin' >Email: </label>
+                <input type='text' name='userEmailLogin' id='userEmailLogin' />
+                
+                {/* <label htmlFor='userEmailLogin'>
+                  Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input
                     type='text'
                     id='userEmailLogin'
@@ -50,12 +63,18 @@ function LoginPage() {
                       setUserEmailLogin(event.target.value)
                     }
                   />
-                </label>
+                </label> */}
+
               </div>
 
+              {/* USER PASSWORD INPUT */}
               <div className='userPW'>
-                <label htmlFor='userPasswordLogin'>
-                  password:
+
+                <label htmlFor='userPasswordLogin' >Email: </label>
+                <input type='text' name='userPasswordLogin' id='userPasswordLogin' />
+
+                {/* <label htmlFor='userPasswordLogin'>
+                  Password:
                   <input
                     type='text'
                     id='userPasswordLogin'
@@ -64,22 +83,24 @@ function LoginPage() {
                       setUserPasswordLogin(event.target.value);
                     }}
                   />
-                </label>
+                </label> */}
+
               </div>
               <input id='formButton' type='submit' value='submit' />
             </form>
           </div>
-          {/* merchant login */}
+
+          {/* MERCHANT LOGIN GOES HERE */}
           <div className='merchantLogin'>
             <div className='merchantAlignment'>
-              <strong>merchant</strong>
+              <strong>Merchant</strong>
             </div>
             <br />
             <form className='merchantForm' onSubmit={handleMerchantLogin}>
               <div className='merchantUsername'>
                 <label htmlFor='merchantUsernameLogin'>
 
-                  email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input 
                 type='text' 
                 id='merchantEmailLogin'
@@ -93,7 +114,7 @@ function LoginPage() {
               </div>
               <div className='merchantPassword'>
                 <label htmlFor='merchantPasswordLogin'>
-                  password:
+                  Password:
                   <input
                     type='text'
                     id='merchantPasswordLogin'

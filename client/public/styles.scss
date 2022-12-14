@@ -317,7 +317,7 @@ table {
   .userLogin {
     // font-size: 1.5rem;
     #userInput {
-      border-radius: 4rem;
+      border-radius: 3px;
       height: 1.25rem;
     }
   }
@@ -325,7 +325,7 @@ table {
   .userPW {
     // font-size: 1.5rem;
     #userPW {
-      border-radius: 4rem;
+      border-radius: 3px;
       height: 1.25rem;
     }
   }
@@ -345,13 +345,13 @@ table {
       // margin-left: 8rem;
     }
     #merchantUsername {
-      border-radius: 4rem;
+      border-radius: 3px;
       height: 1.25rem;
     }
-    #merchantPassword {
-      border-radius: 4rem;
-      height: 1.25rem;
-    }
+    // #merchantPassword {
+    //   border-radius: 4rem;
+    //   height: 1.25rem;
+    // }
   }
 }
 // LOGIN PAGE END
@@ -368,18 +368,18 @@ table {
   font-size: 1.5rem;
   .merchantBusinessName {
     #merchangeBusinessName {
-      border-radius: 4rem;
+      border-radius: 3px;
       height: 1.25rem;
     }
     .merchangeAddress {
       #merchangeAddress {
-        border-radius: 4rem;
+        border-radius: 3px;
         height: 1.25rem;
       }
     }
     .merchantZipCode {
       #merchantZipCode {
-        border-radius: 4rem;
+        border-radius: 3px;
       }
     }
   }
@@ -398,9 +398,10 @@ table {
 // all form inputs
 form {
   input {
-    border-radius: 4rem;
+    border-radius: 8px;
     margin: 0.75rem;
     height: 1.25rem;
+    padding-left: 10px;
   }
 }
 
