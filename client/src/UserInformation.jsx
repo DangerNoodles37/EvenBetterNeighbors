@@ -43,7 +43,7 @@ function UserInformation({ dummyEmail }) {
   }, []);          
 
   return (
-    <div>
+    <div data-testid='userInformation'>
       <div>
         <NavBar />
       </div>

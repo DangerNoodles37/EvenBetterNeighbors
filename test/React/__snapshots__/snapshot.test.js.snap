@@ -7,6 +7,7 @@ exports[`AboutUs component should match snapshot 1`] = `
   <div>
     <div
       className="navBar"
+      data-testid="navbar"
     >
       <div
         className="leftNav"
@@ -93,6 +94,7 @@ exports[`CreateAcct component matches the snapshot 1`] = `
 <div>
   <div
     className="navBar"
+    data-testid="navbar"
   >
     <div
       className="leftNav"
@@ -171,9 +173,8 @@ exports[`CreateAcct component matches the snapshot 1`] = `
         </div>
         <br />
         <form
-          action="http://localhost:3000/createUser"
+          action="http://localhost:3000/api/createUser"
           method="POST"
-          onSubmit={[Function]}
         >
           <label
             htmlFor="firstName"
@@ -417,187 +418,11 @@ exports[`Homepage component matches the snapshot 1`] = `
 </div>
 `;
 
-exports[`LoginPage Component should match snapshot 1`] = `
-<div>
-  <div
-    className="navBar"
-  >
-    <div
-      className="leftNav"
-    >
-      <img
-        alt="Logo"
-        className="leftImage"
-        onClick={[Function]}
-        src="https://i.imgur.com/AHFcYv1.png"
-      />
-    </div>
-    <div
-      className="spacer"
-    />
-    <div
-      className="middleNeighbor"
-    >
-      <img
-        alt="Neighbor"
-        className="siteFontLogo"
-        src="https://i.imgur.com/pD5v9ZC.png"
-      />
-    </div>
-    <div
-      className="spacer"
-    />
-    <div
-      className="rightNav"
-    >
-      <img
-        alt="Team"
-        className="teamImage"
-        onClick={[Function]}
-        src="https://i.imgur.com/FFrUPpK.png"
-      />
-      |
-       
-      <img
-        alt="About Neighbors"
-        className="aboutNeighborImage"
-        onClick={[Function]}
-        src="https://i.imgur.com/su5pf5g.png"
-      />
-      |
-       
-      <img
-        alt="User Information"
-        className="userInfo"
-        onClick={[Function]}
-        src="https://i.imgur.com/VWTc4IU.png"
-      />
-    </div>
-  </div>
-  <div>
-    <h2
-      className="login"
-    >
-      LoginUniqueWord
-    </h2>
-  </div>
-  <div
-    className="loginContainer"
-  >
-    <div
-      className="consMerchContainer"
-    >
-      <div
-        className="userLogin"
-      >
-        <div
-          className="userAlignment"
-        >
-          <strong>
-            User
-          </strong>
-        </div>
-        <br />
-        <form
-          className="userForm"
-          onSubmit={[Function]}
-        >
-          <div
-            className="userLogin"
-          >
-            <label
-              htmlFor="userEmailLogin"
-            >
-              Email: 
-            </label>
-            <input
-              id="userEmailLogin"
-              name="userEmailLogin"
-              type="text"
-            />
-          </div>
-          <div
-            className="userPW"
-          >
-            <label
-              htmlFor="userPasswordLogin"
-            >
-              Password: 
-            </label>
-            <input
-              id="userPasswordLogin"
-              name="userPasswordLogin"
-              type="password"
-            />
-          </div>
-          <input
-            id="formButton"
-            name="userSubmit"
-            type="submit"
-            value="submit"
-          />
-        </form>
-      </div>
-      <div
-        className="merchantLogin"
-      >
-        <div
-          className="merchantAlignment"
-        >
-          <strong>
-            Merchant
-          </strong>
-        </div>
-        <br />
-        <form
-          className="merchantForm"
-          onSubmit={[Function]}
-        >
-          <div
-            className="merchantUsername"
-          >
-            <label
-              htmlFor="merchantUsernameLogin"
-            >
-              Email: 
-            </label>
-            <input
-              id="merchantUsernameLogin"
-              name="merchantUsernameLogin"
-              type="text"
-            />
-          </div>
-          <div
-            className="merchantPassword"
-          >
-            <label
-              htmlFor="merchantPasswordLogin"
-            >
-              Password: 
-            </label>
-            <input
-              id="merchantPasswordLogin"
-              name="merchantPasswordLogin"
-              type="password"
-            />
-          </div>
-          <input
-            id="formButton"
-            name="merchantSubmit"
-            type="submit"
-            value="submit"
-          />
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`LoginPage component should match snapshot 1`] = `
 <div>
   <div
     className="navBar"
+    data-testid="navbar"
   >
     <div
       className="leftNav"
@@ -774,6 +599,7 @@ exports[`LoginPage component should match snapshot 1`] = `
 exports[`NavBar component matches the snapshot 1`] = `
 <div
   className="navBar"
+  data-testid="navbar"
 >
   <div
     className="leftNav"
@@ -832,10 +658,12 @@ exports[`NavBar component matches the snapshot 1`] = `
 exports[`Team component matches the snapshot 1`] = `
 <div
   className="teamPage"
+  data-testid="team"
 >
   <div>
     <div
       className="navBar"
+      data-testid="navbar"
     >
       <div
         className="leftNav"

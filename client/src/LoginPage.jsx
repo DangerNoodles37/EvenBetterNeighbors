@@ -28,12 +28,12 @@ function LoginPage(props) {
     // make an axios post or get request to the URL connecting to auth stuff
     // axios({
     //   method: 'get',
-    //   url: 'http://localhost:3000/api/userLogin',
+    //   url: 'http://localhost:3000/userLogin',
     //   withCredentials: true,
     // })
     //   .then((responseData) => {
     // in the .then, we need to fire a needMerchantData useState callback in order to fire a useEffect Hook which renders merchants
-      // props.setNeedMerchatData(props.needMerchantData)
+    props.setNeedMerchatData(props.needMerchantData)
       //.catch((err) => {
             //  redirect to login page
       //  })

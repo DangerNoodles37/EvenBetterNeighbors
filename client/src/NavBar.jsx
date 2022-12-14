@@ -5,7 +5,7 @@ function NavBar() {
   const history = useHistory();
 
   return (
-    <div className='navBar'>
+    <div className='navBar' data-testid='navbar'>
       {/* left element (directs to home page) */}
       <div className='leftNav'>
         <img

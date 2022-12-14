@@ -39,14 +39,10 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
             {/* form for user */}
             {/* ADD STYLING CLASSNAMES BACK IN LATER */}
-<<<<<<< HEAD
-            <form onSubmit={handleSetDefaultEmail} method='POST' action='http://localhost:3000/createUser'>
-=======
 
            
 
             <form method='POST' action='http://localhost:3000/api/createUser'>
->>>>>>> dev
               <label htmlFor='firstName' >First Name: </label>
               <input type='text' name='firstName' id='firstName'/>
               <br />
