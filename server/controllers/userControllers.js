@@ -41,7 +41,7 @@ userControllers.verifyUser = (req, res, next) => {
             // ASK FRONT END ABOUT REROUTING BAD SIGN UP
             return res.redirect('/LoginPage');
           } else {
-            res.locals.user = doc;
+            res.locals.loggedIn = doc;
             return next();
           }
         })
@@ -63,14 +63,14 @@ userControllers.verifyUser = (req, res, next) => {
 };
 
 // define controller for creating users (use .create)
-userControllers.createUser = ({ body }, res, next) => {
+userControllers.createUser = (req, res, next) => {
   try {
     User.create({
-      firstName: body.body.firstName,
-      lastName: body.body.lastName,
-      email: body.body.email,
-      password: body.body.password,
-      zipCode: body.body.zipCode,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password,
+      zipCode: req.body.zipCode,
     });
 
     return next();
@@ -86,8 +86,8 @@ userControllers.createUser = ({ body }, res, next) => {
 // define controller for deleting user
 userControllers.deleteUser = async (req, res, next) => {
   try {
-    console.log('REQ.PARAMS', req.params);
-    await User.deleteOne({ email: req.params._email }).exec();
+    console.log('REQ.BODY', req.body);
+    await User.deleteOne({ email: req.body.email }).exec();
     return next();
   } catch (err) {
     return next({
@@ -104,10 +104,12 @@ userControllers.deleteUser = async (req, res, next) => {
 // update field identifies the value we are replacing the existing one with
 userControllers.updateUser = async (req, res, next) => {
   try {
+    //does line 108 conver the entire values and keys arrays to strings?
     const updateField = Object.values(req.body).toString();
+    //const updateField = Object.values(req.body)[0] -->??
     const property = Object.keys(req.body).toString();
     await User.findOneAndUpdate(
-      { _id: req.params._id },
+      { _id: req.body.id },
       { [property]: updateField }
     );
     return next();
@@ -119,6 +121,28 @@ userControllers.updateUser = async (req, res, next) => {
     });
   }
 };
+
+// userControllers.updateUser = async (req, res, next) => {
+//   try {
+//     const properties = Object.keys(req.body);
+//     const values = Object.values(req.body);
+
+//     //iterate over the properties and values and update the user document
+//     for (let i = 0; i < properties.length; i++) {
+//       await User.findOutAndUpdate(
+//         {_id: req.body.id },
+//         { [properties[i]]: values[i ]}
+//       );
+//     }
+//     return next();
+//   } catch (err) {
+//     return next({
+//       log: `Error occured in updateUser middleware ${err}`,
+//       status: 400,
+//       message: { err: `An error occurred when updating user data` }
+//     })
+//   }
+// }
 
 // export the module
 module.exports = userControllers;
