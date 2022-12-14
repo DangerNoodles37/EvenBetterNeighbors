@@ -1,26 +1,23 @@
 const express = require('express');
 const { restart } = require('nodemon');
 const router = express.Router();
-const neighborControllers = require('../controllers/neighborControllers');
+const userControllers = require('../controllers/userControllers');
 
-router.get('/:email', neighborControllers.getConsumers, (req, res) => {
-  res.status(200).json(res.locals.consumers);
+router.get('/:email', userControllers.verifyUser, (req, res) => {
+  res.status(200).json(res.locals.user);
 });
 
-router.post(
-  '/',
-  neighborControllers.createConsumers,
-  (req, res) => {
-    res.status(200);
-  }
-);
+//create consumers route is now going to createConsumer
+router.post('/createUser', userControllers.createUser, (req, res) => {
+  res.status(200);
+});
 
-router.delete('/:_email', neighborControllers.deleteConsumers, (req, res) => {
-  console.log('hit delete router', req.params)
+router.delete('/:_email', userControllers.deleteUser, (req, res) => {
+  console.log('hit delete router', req.params);
   res.status(200).json({});
 });
 
-router.patch('/:_email', neighborControllers.updateConsumer, (req, res) => {
+router.patch('/:_email', userControllers.updateUser, (req, res) => {
   res.status(200).json({});
 });
 
