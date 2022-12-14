@@ -27,7 +27,7 @@ function LandingPage() {
 
         </div>
       <section className='merchantWrapper'>
-      <MerchantCards searchZipcode={searchZipcode} />
+      <MerchantCards merchantData={merchantData} searchZipcode={searchZipcode} />
     </section>
     </div>
   );

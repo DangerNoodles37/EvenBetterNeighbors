@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 
-function UserInformation({dummyEmail}) {
+function UserInformation({ dummyEmail }) {
 
   const [data, setData] = useState([]);
   const [userFirstName, setUserFirstName] = useState('');
@@ -25,22 +25,22 @@ function UserInformation({dummyEmail}) {
   }
 
   // deletes a user account
-function deleteAcct () {
-  axios.delete(`http://localhost:3000/api/${data.email}`)
-  .then(()=> {
-    history.push('/')
-  })
-  .catch(err => console.log(err))
-}
+  function deleteAcct () {
+    axios.delete(`http://localhost:3000/api/${data.email}`)
+    .then(()=> {
+      history.push('/')
+    })
+    .catch(err => console.log(err))
+  }
 
- useEffect(() => {
+  useEffect(() => {
     axios.get(`http://localhost:3000/api/${dummyEmail}`, {
     })
       .then((info) => {
        setData(info.data[0]);
        setLoaded(true);
       })
-  }, []); 
+  }, []);          
 
   return (
     <div>
@@ -48,7 +48,7 @@ function deleteAcct () {
         <NavBar />
       </div>
       {!loaded && <p>loading...</p>}
-{loaded && 
+  {loaded && 
       <div className='userInformationContainer'>
         <div className='userInformationTextContainer'>
             <img id='userLogo' src = 'https://i.imgur.com/3KH1t8i.png'></img><br />
@@ -124,14 +124,14 @@ function deleteAcct () {
           <img onClick={deleteAcct} id = 'trash' src='https://i.imgur.com/kGXGseR.png'/>
           </div>
         </div>
+      </div>}
+      
+      <br />
+      <br />
+      <br />
+      <div className = 'buttonContainer'>
+        <img onClick={handleImageOnClick} id ='navigateButton' src= "https://i.imgur.com/D10VJDJ.png" ></img>
       </div>
-}
-<br />
-< br />
-<br />
-<div className = 'buttonContainer'>
-<img onClick={handleImageOnClick} id ='navigateButton' src= "https://i.imgur.com/D10VJDJ.png" ></img>
-</div>
     </div>
   );
 }
