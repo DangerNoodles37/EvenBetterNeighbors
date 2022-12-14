@@ -12,13 +12,13 @@ router.get(
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req, res) => {
-    res.status(200).json(res.locals.loggedIn);
+    res.status(200).redirect('/landing');
   }
 );
 
 //create consumers route is now going to createConsumer
 router.post('/createUser', userControllers.createUser, (req, res) => {
-  res.status(200);
+  res.status(200).redirect('/LoginPage');
 });
 
 router.delete('/delete', userControllers.deleteUser, (req, res) => {
@@ -32,7 +32,10 @@ router.patch('/update', userControllers.updateUser, (req, res) => {
 
 //merchant side routers
 
-// ADD LIST OF ALL MERCHANTS
+// LIST OF ALL MERCHANTS
+router.get('/allMerchants', merchantControllers.getAllMerchants, (req, res) => {
+  res.status(200).json(res.locals.merchants);
+});
 
 router.get('/merchantLogin', merchantControllers.verifyMerchant, (req, res) => {
   res.status(200).json(res.locals.merchant);
@@ -43,7 +46,7 @@ router.post(
   '/createMerchant',
   merchantControllers.createMerchant,
   (req, res) => {
-    res.status(200);
+    res.sendStatus(200);
   }
 );
 

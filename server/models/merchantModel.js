@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs');
 const SALT_WORK_FACTOR = 10;
 
 const merchantSchema = new mongoose.Schema({
-  businessEmail: { type: String, required: true, unique: true },
+  merchantEmail: { type: String, required: true, unique: true },
   merchantPassword: { type: String, required: true },
-  businessName: { type: String, required: true },
-  typeOfBusiness: { type: String, required: true },
-  businessAddress: { type: String },
-  businessZipCode: { type: String },
+  merchantName: { type: String, required: true },
+  typeOfMerchant: { type: String, required: true },
+  merchantAddress: { type: String },
+  merchantZipCode: { type: String },
   description: { type: String },
   image: { type: Buffer },
 });

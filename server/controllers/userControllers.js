@@ -38,10 +38,12 @@ userControllers.verifyUser = (req, res, next) => {
         .compare(password, doc.password)
         .then((result) => {
           if (!result) {
+            //can we do a doc find on the database and return all users back to the front end?
             // ASK FRONT END ABOUT REROUTING BAD SIGN UP
             return res.redirect('/LoginPage');
           } else {
             res.locals.loggedIn = doc;
+            console.log(`LEAVING VERIFY:  `);
             return next();
           }
         })
@@ -64,13 +66,14 @@ userControllers.verifyUser = (req, res, next) => {
 
 // define controller for creating users (use .create)
 userControllers.createUser = (req, res, next) => {
+  const { firstName, lastName, email, password, zipCode } = req.body;
   try {
     User.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
-      zipCode: req.body.zipCode,
+      firstName,
+      lastName,
+      email,
+      password,
+      zipCode,
     });
 
     return next();
@@ -86,8 +89,9 @@ userControllers.createUser = (req, res, next) => {
 // define controller for deleting user
 userControllers.deleteUser = async (req, res, next) => {
   try {
+    const userID = req.cookies.ssid;
     console.log('REQ.BODY', req.body);
-    await User.deleteOne({ email: req.body.email }).exec();
+    await User.deleteOne({ _id: userID }).exec();
     return next();
   } catch (err) {
     return next({
@@ -104,14 +108,12 @@ userControllers.deleteUser = async (req, res, next) => {
 // update field identifies the value we are replacing the existing one with
 userControllers.updateUser = async (req, res, next) => {
   try {
+    const userID = req.cookies.ssid;
     //does line 108 conver the entire values and keys arrays to strings?
     const updateField = Object.values(req.body).toString();
     //const updateField = Object.values(req.body)[0] -->??
     const property = Object.keys(req.body).toString();
-    await User.findOneAndUpdate(
-      { _id: req.body.id },
-      { [property]: updateField }
-    );
+    await User.findOneAndUpdate({ _id: userID }, { [property]: updateField });
     return next();
   } catch (err) {
     return next({

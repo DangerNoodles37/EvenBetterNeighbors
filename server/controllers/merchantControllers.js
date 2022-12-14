@@ -6,7 +6,7 @@ merchantControllers.verifyMerchant = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
   const { password, email } = req.body;
 
-  Merchant.findOne({ email: `${email}` })
+  Merchant.findOne({ merchantEmail: `${email}` })
     .then((doc) => {
       // if username doesn't exist, send to sign up
       if (!doc) {
@@ -15,7 +15,7 @@ merchantControllers.verifyMerchant = (req, res, next) => {
       }
       // check password
       bcrypt
-        .compare(password, doc.password)
+        .compare(password, doc.merchantPassword)
         .then((result) => {
           if (!result) {
             // ASK FRONT END ABOUT REROUTING BAD SIGN UP
@@ -42,16 +42,29 @@ merchantControllers.verifyMerchant = (req, res, next) => {
     });
 };
 
-merchantControllers.createMerchant = ({ body }, req, res, next) => {
+//const { password, email } = req.body;
+merchantControllers.createMerchant = (req, res, next) => {
+  const {
+    merchantEmail,
+    merchantPassword,
+    merchantName,
+    typeOfMerchant,
+    merchantAddress,
+    merchantZipCode,
+    description,
+    image,
+  } = req.body;
+
   try {
     Merchant.create({
-      businessEmail: req.body.businessEmail,
-      merchantPassword: req.body.merchantPassword,
-      businessName: req.body.businessName,
-      typeOfBusiness: req.body.typeOfBusiness,
-      businessZipCode: req.body.businessZipCode,
-      description: req.body.description,
-      image: req.body.image,
+      merchantEmail,
+      merchantPassword,
+      merchantName,
+      typeOfMerchant,
+      merchantAddress,
+      merchantZipCode,
+      description,
+      image,
     });
 
     return next();
@@ -64,13 +77,35 @@ merchantControllers.createMerchant = ({ body }, req, res, next) => {
   }
 };
 
+//new getMerchants controller that requires review
+//does the front end want a hard limit on the number we send back, or are we good with an infinite front page scroll for all merchants?
+merchantControllers.getAllMerchants = (req, res, next) => {
+  console.log(`ENTERED getUsers: `);
+
+  Merchant.find()
+    .then((docs) => {
+      //return an object containing all merchants in the database
+      // return res.json({
+      //   merchants: docs,
+      // });
+      res.locals.merchants = docs;
+      return next();
+    })
+    .catch((err) => {
+      next({
+        log: err,
+        message: { err: `error in merchantController.getMerchants` },
+      });
+    });
+};
 // console.log(`ENTERED VERIFY:  `);
 // const { password, email } = req.body;
 
 merchantControllers.deleteMerchant = async (req, res, next) => {
   try {
+    const merchantID = req.cookies.ssid;
     console.log('REQ.BODY', req.body);
-    await Merchant.deleteOne({ email: req.body.email }).exec();
+    await Merchant.deleteOne({ _id: merchantID }).exec();
     return next();
   } catch (err) {
     return next({
@@ -83,10 +118,11 @@ merchantControllers.deleteMerchant = async (req, res, next) => {
 
 merchantControllers.updateMerchant = async (req, res, next) => {
   try {
+    const merchantID = req.cookies.ssid;
     const updateField = Object.values(req.body).toString();
     const property = Object.keys(req.body).toString();
     await Merchant.findOneAndUpdate(
-      { _id: req.body.id },
+      { _id: merchantID },
       { [property]: updateField }
     );
     return next();
