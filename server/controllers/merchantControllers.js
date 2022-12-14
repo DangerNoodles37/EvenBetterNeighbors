@@ -1,6 +1,6 @@
 const Merchant = require('../models/merchantModel');
 const bcrypt = require('bcryptjs');
-const userControllers = {};
+const merchantControllers = {};
 
 merchantControllers.verifyMerchant = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
