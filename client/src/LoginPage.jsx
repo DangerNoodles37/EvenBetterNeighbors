@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import { useHistory } from 'react-router-dom';
-
+import axios from 'axios';
 function LoginPage(props) {
   const history = useHistory();
   // USE USE NAVIGTE INSTEAD OF HISTORY
@@ -15,48 +15,56 @@ function LoginPage(props) {
   const [merchantEmailLogin, setMerchantEmailLogin] = useState('');
   const [merchantPasswordLogin, setMerchantPasswordLogin] = useState('');
 
-  function handleUserLogin() {
-    // logic for users logging in should go here. 
-    // currently redirects to landing page
-    event.preventDefault()
-    const userAuthBody = {
-      email: event.target[0].value,
-      password: event.target[1].value
-    }
+  // function handleUserLogin(event) {
+  //   // logic for users logging in should go here.
+  //   // currently redirects to landing page
+  //   event.preventDefault();
+  //   const userAuthBody = {
+  //     email: event.target[0].value,
+  //     password: event.target[1].value,
+  //   };
 
-    console.log('User Name Body We Are Sending to Back End: ', userAuthBody)
-    // make an axios post or get request to the URL connecting to auth stuff
-    // axios({
-    //   method: 'get',
-    //   url: 'http://localhost:3000/userLogin',
-    //   withCredentials: true,
-    // })
-    //   .then((responseData) => {
-    // in the .then, we need to fire a needMerchantData useState callback in order to fire a useEffect Hook which renders merchants
-    props.setNeedMerchatData(props.needMerchantData)
-      //.catch((err) => {
-            //  redirect to login page
-      //  })
-      // 
-      
-    // })
-    // .then, redirect to the landing page USING THE USENAVIGATE HOOK
-    // history.push('/landing')
-  }
+  //   console.log('User Name Body We Are Sending to Back End: ', userAuthBody);
+  //   // make an axios post or get request to the URL connecting to auth stuff
+  //   axios({
+  //     method: 'post',
+  //     url: 'http://localhost:3000/userLogin',
+  //     withCredentials: true,
+  //     data: userAuthBody,
+  //   })
+  //     .then((responseData) => {
+  //       // props.setNeedMerchatData(props.needMerchantData)
+  //       console.log('Login Verified');
+  //     })
+  //     .catch((err) => {
+  //       console.log('Err in Login');
+  //     });
+  // in the .then, we need to fire a needMerchantData useState callback in order to fire a useEffect Hook which renders merchants
+  // props.setNeedMerchatData(props.needMerchantData);
+  //.catch((err) => {
+  //  redirect to login page
+  //
 
-  function handleMerchantLogin() {
-    event.preventDefault()
-    // logic for merchants logging inHI THERE TRABLINK should go here
-    // create a new object containing the user email and password bodies
-    const merchantAuthBody = {
-      email: event.target[0].value,
-      password: event.target[1].value
-    }
+  // })
+  // .then, redirect to the landing page USING THE USENAVIGATE HOOK
+  // history.push('/landing')
 
-    console.log('User Name Body We Are Sending to Back End: ', merchantAuthBody)
-    // axios({
-    // })
-  }
+  // function handleMerchantLogin() {
+  //   event.preventDefault();
+  //   // logic for merchants logging inHI THERE TRABLINK should go here
+  //   // create a new object containing the user email and password bodies
+  //   const merchantAuthBody = {
+  //     email: event.target[0].value,
+  //     password: event.target[1].value,
+  //   };
+
+  //   console.log(
+  //     'User Name Body We Are Sending to Back End: ',
+  //     merchantAuthBody
+  //   );
+  //   // axios({
+  //   // })
+  // }
 
   return (
     <div>
@@ -74,32 +82,34 @@ function LoginPage(props) {
             </div>
             <br />
             {/* USER LOGIN FORM GOES HERE */}
-            <form className='userForm' onSubmit={handleUserLogin}>
+            <form
+              className='userForm'
+              method='post'
+              action='http://localhost:3000/userLogin'
+            >
+              {/* <form className='userForm' onSubmit={handleUserLogin}*/}
               <div className='userLogin'>
-
                 {/* USER EMAIL INPUT */}
-                <label htmlFor='userEmailLogin' >Email: </label>
-                <input type='text' name='userEmailLogin' id='userEmailLogin' />
-                
+                <label htmlFor='email'>Email: </label>
+                <input type='text' name='email' id='email' />
+
                 {/* <label htmlFor='userEmailLogin'>
                   Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <input
                     type='text'
-                    id='userEmailLogin'
+                    id='userEmailLogin'ss
                     value={userEmailLogin}
                     onChange={(event) =>
                       setUserEmailLogin(event.target.value)
                     }
                   />
                 </label> */}
-
               </div>
 
               {/* USER PASSWORD INPUT */}
               <div className='userPW'>
-
-                <label htmlFor='userPasswordLogin' >Password: </label>
-                <input type='password' name='userPasswordLogin' id='userPasswordLogin' />
+                <label htmlFor='password'>Password: </label>
+                <input type='password' name='password' id='password' />
 
                 {/* <label htmlFor='userPasswordLogin'>
                   Password:
@@ -112,9 +122,13 @@ function LoginPage(props) {
                     }}
                   />
                 </label> */}
-
               </div>
-              <input name='userSubmit' id='formButton' type='submit' value='submit' />
+              <input
+                name='userSubmit'
+                id='formButton'
+                type='submit'
+                value='submit'
+              />
             </form>
           </div>
 
@@ -124,13 +138,15 @@ function LoginPage(props) {
               <strong>Merchant</strong>
             </div>
             <br />
-            <form className='merchantForm' onSubmit={handleMerchantLogin}>
-              
+            <form
+              className='merchantForm'
+              method='post'
+              action='http://localhost:3000/merchantLogin'
+            >
               {/* MERCHANT EMAIL LOGIN */}
               <div className='merchantUsername'>
-
-                <label htmlFor='merchantUsernameLogin' >Email: </label>
-                <input type='text' name='merchantUsernameLogin' id='merchantUsernameLogin' />
+                <label htmlFor='memail'>Email: </label>
+                <input type='text' name='memail' id='memail' />
 
                 {/* <label htmlFor='merchantUsernameLogin'>
                   Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -147,9 +163,8 @@ function LoginPage(props) {
 
               {/* MERCHANT PASSWORD LOGIN */}
               <div className='merchantPassword'>
-
-                <label htmlFor='merchantPasswordLogin' >Password: </label>
-                <input type='password' name='merchantPasswordLogin' id='merchantPasswordLogin' />
+                <label htmlFor='mpassword'>Password: </label>
+                <input type='password' name='mpassword' id='mpassword' />
 
                 {/* <label htmlFor='merchantPasswordLogin'>
                   Password:
@@ -162,10 +177,9 @@ function LoginPage(props) {
                     }}
                   />
                 </label> */}
-
               </div>
 
-              <input name='merchantSubmit' id='formButton' type='submit' value='submit' />
+              <input id='merchantFormButton' type='submit' value='submit' />
             </form>
           </div>
         </div>

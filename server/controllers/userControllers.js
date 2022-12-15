@@ -25,13 +25,13 @@ const userControllers = {};
 userControllers.verifyUser = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
   const { password, email } = req.body;
-
+  console.log('req body --> ', req.body);
   User.findOne({ email: `${email}` })
     .then((doc) => {
       // if username doesn't exist, send to sign up
       if (!doc) {
         // ASK FRONT END ABOUT REROUTING BAD SIGN UP
-        return res.redirect('/CreateAcct');
+        return res.redirect('http://localhost:8080/createAccount');
       }
       // check password
       bcrypt
@@ -40,7 +40,7 @@ userControllers.verifyUser = (req, res, next) => {
           if (!result) {
             //can we do a doc find on the database and return all users back to the front end?
             // ASK FRONT END ABOUT REROUTING BAD SIGN UP
-            return res.redirect('/LoginPage');
+            return res.redirect('http://localhost:8080/loginPage');
           } else {
             res.locals.loggedIn = doc;
             console.log(`LEAVING VERIFY:  `);
@@ -66,6 +66,7 @@ userControllers.verifyUser = (req, res, next) => {
 
 // define controller for creating users (use .create)
 userControllers.createUser = (req, res, next) => {
+  console.log('REQ BODY', req.body);
   const { firstName, lastName, email, password, zipCode } = req.body;
   try {
     User.create({
