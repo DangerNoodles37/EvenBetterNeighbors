@@ -3,7 +3,7 @@ const server = 'http://localhost:3000';
 
 
 
-xdescribe('Requests to /creatUser should work', () => {
+describe('Requests to /createUser should work', () => {
   test('POST /createUser', (done) => {
     request(server)
     .post("/createUser")
@@ -21,6 +21,15 @@ xdescribe('Requests to /creatUser should work', () => {
     })
   });
 });
+
+// const userSchema = new mongoose.Schema({
+//   firstName: { type: String, required: true },
+//   lastName: { type: String, required: true },
+//   email: { type: String, required: true },
+//   password: { type: String, required: true },
+//   zipCode: { type: String },
+// });
+
 
 xdescribe('Requests to /test should work', () => {
   test('Get /test', (done) => {
@@ -41,13 +50,14 @@ describe('POST /createUser', () => {
       .send({
         username: 'testuser',
         password: 'testpassword'
+
       })
       .expect('Location', '/LoginPage')
       .expect(302);
   });
 });
 
-describe('DELETE /delete', () => {
+xdescribe('DELETE /delete', () => {
   it('should return a status code of 200', async () => {
     const response = await request(server)
       .delete('/delete')
@@ -59,6 +69,14 @@ describe('DELETE /delete', () => {
       // expect(response.body).toEqual({});
   });
 });
+
+describe('PATCH /update', () => {
+  it('should successfully update existing user', () => {
+
+  })
+})
+
+
 
 
 // const mockRequest = {
