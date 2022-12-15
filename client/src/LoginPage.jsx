@@ -22,7 +22,7 @@ function LoginPage(props) {
     <div>
       <NavBar />
       <div>
-        <h2 className='login'>LoginUniqueWord</h2>
+        <h2 className='login'>Login</h2>
       </div>
       <div className='loginContainer'>
         {/* hold both user and merchant login */}

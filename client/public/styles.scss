@@ -103,6 +103,7 @@ section {
 
 body {
   line-height: 1;
+
 }
 
 ol,
@@ -463,6 +464,14 @@ form {
   height: 200px;
   width: auto;
   padding: 40px;
+}
+
+.teamHeader {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(77, 77, 77)
 }
 
 .teamBox {

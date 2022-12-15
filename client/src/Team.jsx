@@ -14,13 +14,13 @@ function Team() {
         <div className='zach'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/A0Q4L5l.png'
+            src='https://i.imgur.com/W3fbp8y.png'
           ></img>
           <div className='teamText'>
             <p>
               Camille Salter  <br />
               <br />
-              Network Ninja
+              Backend Engineer & Tester
             </p>
             <a href='https://github.com/CamSalter'>Github</a>
           </div>
@@ -28,13 +28,13 @@ function Team() {
         <div className='zach'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/A0Q4L5l.png'
+            src='https://i.imgur.com/TrzpIlP.png'
           ></img>
           <div className='teamText'>
             <p>
               Andrew Hogan <br />
               <br />
-              Network Ninja
+              Fullstack & Testing Engineer
             </p>
             <a href='https://github.com/andrewlallyhogan'>Github</a>
           </div>
@@ -42,13 +42,13 @@ function Team() {
         <div className='chase'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/kXsSP3w.png'
+            src='https://i.imgur.com/jCmd23c.png'
           ></img>
           <div className='teamText'>
             <p>
               Eshaan Joshi <br />
               <br />
-              Digital Data Detective
+              Frontend Engineer
             </p>
             <a href='https://github.com/eshaan32'>Github</a>
           </div>
@@ -57,13 +57,13 @@ function Team() {
         <div className='danny'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/5JzRNX2.png'
+            src='https://i.imgur.com/rb8rMhH.png'
           ></img>
           <div className='teamText'>
             <p>
               Greg Jenner <br />
               <br />
-              Automation Wizard
+              Backend & Database Engineer
             </p>
             <a href='https://github.com/gregjenner'>Github</a>
           </div>
@@ -72,13 +72,13 @@ function Team() {
         <div className='sakura'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/OU2oPsZ.jpg'
+            src='https://i.imgur.com/1XXAny6.png'
           ></img>
           <div className='teamText'>
             <p>
               Jason Goldman <br />
               <br />
-              Server Wrangler
+              Fullstack Engineer
             </p>
             <a href='https://github.com/Trablink'>Github</a>
           </div>
