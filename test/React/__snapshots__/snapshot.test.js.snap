@@ -358,6 +358,7 @@ exports[`CreateAcct component matches the snapshot 1`] = `
 exports[`Homepage component matches the snapshot 1`] = `
 <div
   className="homeContainer"
+  data-testid="homeContainer"
 >
   <div
     className="leftInterface"
