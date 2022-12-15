@@ -16,7 +16,8 @@ sessionController.startSession = (req, res, next) => {
         console.log(typeof ssid);
         // redirect because ssid exists
         console.log('found session with matching ssid');
-        return res.redirect('/landing');
+        // return res.redirect('/landing');
+        return next();
       } else {
         console.log(ssid);
         console.log(typeof ssid);

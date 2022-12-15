@@ -11,8 +11,22 @@ const merchantSchema = new mongoose.Schema({
   merchantAddress: { type: String },
   merchantZipCode: { type: String },
   description: { type: String },
-  image: { type: Buffer },
+  image: {
+    type: String,
+    default: 'https://en.wiktionary.org/wiki/File:Cirila-%D0%9C-majuskla.svg',
+  },
 });
+
+// await Merchant.create({
+//   merchantEmail,
+//   merchantPassword,
+//   merchantName,
+//   typeOfMerchant,
+//   merchantAddress,
+//   merchantZipCode,
+//   description,
+//   image,
+// });
 
 merchantSchema.pre('save', function (next) {
   const merchant = this;

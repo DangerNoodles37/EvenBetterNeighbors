@@ -4,15 +4,15 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 function CreateAcct({ setDefaultEmail, defaultEmail }) {
-  const history = useHistory(); 
+  const history = useHistory();
 
   const handleSetDefaultEmail = () => {
-    event.preventDefault()
-    
-    console.log('Create User Button Clicked')
-    setDefaultEmail(event.target[2].value)
-  }
-  // Spacing below was done using manual spacers. Should be done via divs in SCSS. 
+    event.preventDefault();
+
+    console.log('Create User Button Clicked');
+    // setDefaultEmail(event.target[2].value)
+  };
+  // Spacing below was done using manual spacers. Should be done via divs in SCSS.
 
   return (
     <div>
@@ -33,42 +33,49 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
             <br></br>
 
             {/* TEMPLATE HERE */}
-              {/* <label htmlFor='firstName' >last name: </label>
+            {/* <label htmlFor='firstName' >last name: </label>
               <input type='text' name='firstName' id='firstName'/> */}
             {/* TEMPLATE END HERE */}
 
             {/* form for user */}
             {/* ADD STYLING CLASSNAMES BACK IN LATER */}
 
-           
-
-            <form method='POST' action='http://localhost:3000/api/createUser'>
-              <label htmlFor='firstName' >First Name: </label>
-              <input type='text' name='firstName' id='firstName'/>
-              <br />
-              
-              <label htmlFor='lastName' >Last Name: </label>
-              <input type='text' name='lastName' id='lastName'/>
+            <form method='POST' action='http://localhost:3000/createUser'>
+              <label htmlFor='firstName'>First Name: </label>
+              <input type='text' name='firstName' id='firstName' />
               <br />
 
-              <label htmlFor='userEmail' >Email: </label>
-              <input type='text' name='userEmail' id='userEmail'/>
+              <label htmlFor='lastName'>Last Name: </label>
+              <input type='text' name='lastName' id='lastName' />
               <br />
 
-              <label htmlFor='userPassword' >Password: </label>
+              <label htmlFor='email'>Email: </label>
+              <input type='text' name='email' id='email' />
+              <br />
+
+              <label htmlFor='password'>Password: </label>
               {/* CHANGE TYPE TO PASSWORD ONCE DONE W TESTING AND DEVELOPMEN */}
-              <input type='password' name='userPassword' id='userPassword'/>
+              <input type='password' name='password' id='password' />
               <br />
 
-              <label htmlFor='userZipCode' >Zip Code: </label>
-              <input type='text' name='userZipCode' id='userZipCode'/>
+              <label htmlFor='zipCode'>Zip Code: </label>
+              <input type='text' name='zipCode' id='zipCode' />
               <br />
 
               <input id='formButton' type='submit' value='submit' />
             </form>
           </section>
 
-          {/* merchant login */}
+          {/* merchant accoutn creation */}
+          {/* merchantEmail,
+          merchantPassword,
+          merchantName,
+          typeOfMerchant,
+          merchantAddress,
+          merchantZipCode,
+          description,
+          image, */}
+
           <div className='merchantLogin'>
             {/* header for user login */}
             <div className='merchantAlignment'>
@@ -76,37 +83,41 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
             </div>
             <br></br>
 
-            <form method='POST' action='http://localhost:3000/createMerchant'>
-              <label htmlFor='businessEmail' >Email: </label>
-              <input type='text' name='businessEmail' id='businessEmail'/>
+            <form method='post' action='http://localhost:3000/createMerchant'>
+              <label htmlFor='merchantEmail'>Email: </label>
+              <input type='text' name='merchantEmail' id='merchantEmail' />
               <br />
 
-              <label htmlFor='merchantPassword' >Password: </label>
+              <label htmlFor='merchantPassword'>Password: </label>
               {/* CHANGE TYPE TO PASSWORD AFTER TESING AND DEVELOPMEN */}
-              <input type='password' name='merchantPassword' id='merchantPassword'/>
+              <input
+                type='password'
+                name='merchantPassword'
+                id='merchantPassword'
+              />
               <br />
 
-              <label htmlFor='businessName' >Business Name: </label>
-              <input type='text' name='businessName' id='businessName'/>
+              <label htmlFor='merchantName'>Business Name: </label>
+              <input type='text' name='merchantName' id='merchantName' />
               <br />
 
-              <label htmlFor='typeOfBusiness' >Business Type: </label>
-              <input type='text' name='typeOfBusiness' id='typeOfBusiness'/>
+              <label htmlFor='typeOfMerchant'>Business Type: </label>
+              <input type='text' name='typeOfMerchant' id='typeOfMerchant' />
               <br />
 
-              <label htmlFor='businessAddress' > Address: </label>
-              <input type='text' name='businessAddress' id='businessAddress'/>
+              <label htmlFor='merchantAddress'> Address: </label>
+              <input type='text' name='merchantAddress' id='merchantAddress' />
               <br />
 
-              <label htmlFor='businessZipCode' >Zip Code: </label>
-              <input type='text' name='businessZipCode' id='businessZipCode'/>
+              <label htmlFor='merchantZipCode'>Zip Code: </label>
+              <input type='text' name='merchantZipCode' id='merchantZipCode' />
               <br />
 
-              <label htmlFor='description' >Description: </label>
-              <input type='text' name='description' id='description'/>
+              <label htmlFor='description'>Description: </label>
+              <input type='text' name='description' id='description' />
               <br />
 
-              <label htmlFor='image' >Image: </label>
+              <label htmlFor='image'>Image: </label>
               <input type='text' name='image' id='image' />
 
               <br />
