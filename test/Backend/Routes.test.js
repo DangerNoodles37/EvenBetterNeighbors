@@ -14,7 +14,7 @@ describe('Requests to /createUser should work', () => {
       password: 'TESTPASSWORD2',
       zipCode: 'TESTZIPCODE2'
     })
-    .expect('Found. Redirecting to http://localhost:8080/loginPage')
+    // .expect('Found. Redirecting to http://localhost:8080/loginPage')
     .expect(302)
     .expect('Location', /\/loginPage/)
     .end((err, res) => {
@@ -49,7 +49,7 @@ describe('requests to createMerchant should create a merchant in the dtb', () =>
         description: 'whatitis',
         image: 'checkImage'
       })
-      .expect('Found. Redirecting to http://localhost:8080/loginPage')
+      // .expect('Found. Redirecting to http://localhost:8080/loginPage')
       .expect(302)
       .expect('Location', /\/loginPage/)
       .end((err, res) => {
@@ -223,6 +223,74 @@ xdescribe('GET /allMerchants', () => {
 });
 
 
+//route testing for merchant login
+xdescribe('POST /merchantLogin', () => {
+  let server;
+  let merchantControllersMock;
+
+  beforeAll(() => {
+    //creates a mock object for the merchantControllers module
+    merchantControllersMock = {
+      verifyMerchant: jest.fn()
+    };
+
+    //requires the server module, and replaces the merchantControllers module with a mock object
+    server = require('../server', { 
+      './merchantControllers': merchantControllersMock
+    });
+  });
+
+  afterAll(() => {
+    //closes the server after the tests are run
+    server.close();
+  });
+  //'http://localhost:8080/landing'
+  //checks that the response has a 200 status and the correct location 
+  test('returns a 200 status and redirects to /landing on successful login', async () => {
+    merchantControllersMock.verifyMerchant.mockRedirectCheck((req, res, next) => {
+      next();
+    });
+
+    const response = await request(server).post('./LoginPage')
+
+    expect(response.status).toBe(200);
+
+    
+  })
+})
+
+xdescribe('POST /userLogin', () => {
+  let server;
+  let userControllersMock;
+
+  beforeAll(() => {
+    //creates a mock object for the merchantControllers module
+    userControllersMock = {
+      verifyUser: jest.fn()
+    };
+
+    //requires the server module, and replaces the userControllers module with a mock object
+    server = require('../server', { 
+      './userControllers': userControllersMock
+    });
+  });
+
+  afterAll(() => {
+    //closes the server after the tests are run
+    server.close();
+  });
+  //'http://localhost:8080/landing'
+  //checks that the response has a 200 status and the correct location 
+  test('returns a 200 status and redirects to /landing on successful login', async () => {
+    userControllersMock.verifyUser.mockRedirectCheck((req, res, next) => {
+      next();
+    });
+
+    const response = await request(server).post('./LoginPage')
+
+    expect(response.status).toBe(200);
+  })
+})
 
 
 
