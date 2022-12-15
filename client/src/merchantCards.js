@@ -20,7 +20,7 @@ function MerchantCards(props) {
   }
 
   function openModal(e) {
-    event.preventDefault();
+    e.preventDefault();
     // console.log('hello from IMAGEEEE');
     // // grab the current target id of the image clicked, and do string magic to get rid of merchantImage text, leaving only the index number. convert that number to string and now have access to props info via index
     // const currentElemId = e.currentTarget.value;
@@ -44,7 +44,7 @@ function MerchantCards(props) {
                 <img
                   key={newIndex}
                   src={merchantImg}
-                  id={`merchantImage${index}`}
+                  id={'merchantImage'}
                   role='button'
                   onClick={(e) => {
                     setModalId(index);

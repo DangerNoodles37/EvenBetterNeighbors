@@ -103,7 +103,6 @@ section {
 
 body {
   line-height: 1;
-
 }
 
 ol,
@@ -252,7 +251,7 @@ table {
   .leftImage {
     width: 75px;
     height: auto;
-    padding-right: 105px
+    padding-right: 105px;
   }
 
   .siteFontLogo {
@@ -264,7 +263,6 @@ table {
   .rightNav {
     display: flex;
     float: right;
-    
   }
 
   .teamImage {
@@ -277,8 +275,8 @@ table {
   }
 
   .userInfo {
-    height: 20px; 
-    width: auto; 
+    height: 20px;
+    width: auto;
   }
 }
 
@@ -417,14 +415,14 @@ form {
 
 // LANDING PAGE
 
-// outer box for all market cards 
+// outer box for all market cards
 .merchantWrapper {
   display: flex;
   flex: 0 0 0 0 20%;
   flex-wrap: wrap;
 }
 
-// box for each individual merchant card 
+// box for each individual merchant card
 .cardWrapper {
   display: flex;
   flex-direction: row;
@@ -437,7 +435,7 @@ form {
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-// location and size styling for merchant cards 
+// location and size styling for merchant cards
 .eachMerchantImage {
   display: flex;
   flex-direction: row;
@@ -447,11 +445,13 @@ form {
 }
 
 #merchantImage {
+  height: 230px;
+  width: 230px;
   display: block;
   border-radius: 10px;
 }
 
-// search bar styling 
+// search bar styling
 .searchBar {
   margin-top: 20px;
   text-align: center;
@@ -459,7 +459,7 @@ form {
 
 //  TEAM PAGE STARTS HERE
 
-// individual team photo 
+// individual team photo
 .teamPhoto {
   height: 200px;
   width: auto;
@@ -471,7 +471,7 @@ form {
   width: 100%;
   text-align: center;
   font-size: 30px;
-  color: rgb(77, 77, 77)
+  color: rgb(77, 77, 77);
 }
 
 .teamBox {
@@ -490,39 +490,38 @@ form {
   justify-content: center;
 }
 
-// text underneath each photo 
+// text underneath each photo
 .teamText {
   text-align: center;
 }
-
 
 // ABOUT US START
 
 // outmost container
 .aboutUsContainer {
   display: flex;
-  margin: auto; 
-  margin-top: 150px; 
+  margin: auto;
+  margin-top: 150px;
   justify-content: center;
   align-items: center;
 }
 
-// styling for the text box 
+// styling for the text box
 .aboutUsTextContainer {
   background-color: #f8f6f6;
-  height: 400px; 
-  width: 650px; 
-  border-radius: 30px; 
-  margin: auto; 
+  height: 400px;
+  width: 650px;
+  border-radius: 30px;
+  margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   justify-content: center;
   align-items: center;
   line-height: 23px;
-  padding: 50px; 
-  overflow: scroll; 
+  padding: 50px;
+  overflow: scroll;
 }
 
-// about us text logo in the text box 
+// about us text logo in the text box
 #aboutUsLogo {
   height: 30px;
   width: auto;
@@ -530,8 +529,8 @@ form {
 
 .userInformationContainer {
   display: flex;
-  margin: auto; 
-  margin-top: 150px; 
+  margin: auto;
+  margin-top: 150px;
   justify-content: center;
   align-items: center;
 }
@@ -539,16 +538,16 @@ form {
 .userInformationTextContainer {
   text-align: center;
   background-color: #f8f6f6;
-  height: 490px; 
-  width: 650px; 
-  border-radius: 30px; 
-  margin: auto; 
+  height: 490px;
+  width: 650px;
+  border-radius: 30px;
+  margin: auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   justify-content: center;
   align-items: center;
   line-height: 23px;
-  padding: 50px; 
-  overflow: scroll; 
+  padding: 50px;
+  overflow: scroll;
 }
 
 #userLogo {
@@ -556,20 +555,19 @@ form {
 }
 
 .buttonContainer {
-  display: flex; 
-  margin: auto; 
+  display: flex;
+  margin: auto;
   justify-content: center;
   align-items: center;
 }
 #navigateButton {
-  height: 40px; 
-  width: auto; 
+  height: 40px;
+  width: auto;
 }
 
-
 #trash {
-  width: 40px; 
-  height: auto; 
+  width: 40px;
+  height: auto;
   display: flex;
   justify-content: end;
 }
