@@ -6,19 +6,19 @@ const merchantControllers = require('../controllers/merchantControllers');
 const cookieController = require('../controllers/cookieController');
 const sessionController = require('../controllers/sessionController');
 
-router.get(
+router.post(
   '/userLogin',
   userControllers.verifyUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req, res) => {
-    res.status(200).redirect('/landing');
+    res.status(200).redirect('http://localhost:8080/landing');
   }
 );
 
 //create consumers route is now going to createConsumer
 router.post('/createUser', userControllers.createUser, (req, res) => {
-  res.status(200).redirect('/LoginPage');
+  res.status(200).redirect('http://localhost:8080/loginPage');
 });
 
 router.delete('/delete', userControllers.deleteUser, (req, res) => {
@@ -37,16 +37,20 @@ router.get('/allMerchants', merchantControllers.getAllMerchants, (req, res) => {
   res.status(200).json(res.locals.merchants);
 });
 
-router.get('/merchantLogin', merchantControllers.verifyMerchant, (req, res) => {
-  res.status(200).json(res.locals.merchant);
-});
+router.post(
+  '/merchantLogin',
+  merchantControllers.verifyMerchant,
+  (req, res) => {
+    res.status(200).redirect('http://localhost:8080/landing');
+  }
+);
 
 //create consumers route is now going to createConsumer
 router.post(
   '/createMerchant',
   merchantControllers.createMerchant,
   (req, res) => {
-    res.sendStatus(200);
+    res.status(200).redirect('http://localhost:8080/loginPage');
   }
 );
 

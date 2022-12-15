@@ -4,22 +4,22 @@ const merchantControllers = {};
 
 merchantControllers.verifyMerchant = (req, res, next) => {
   console.log(`ENTERED VERIFY:  `);
-  const { password, email } = req.body;
-
-  Merchant.findOne({ merchantEmail: `${email}` })
+  const { mpassword, memail } = req.body;
+  console.log('req.body: ', req.body);
+  Merchant.findOne({ merchantEmail: `${memail}` })
     .then((doc) => {
       // if username doesn't exist, send to sign up
       if (!doc) {
         // ASK FRONT END ABOUT REROUTING BAD SIGN UP
-        return res.redirect('/CreateAcct');
+        return res.redirect('http://localhost:8080/createAccount');
       }
       // check password
       bcrypt
-        .compare(password, doc.merchantPassword)
+        .compare(mpassword, doc.merchantPassword)
         .then((result) => {
           if (!result) {
             // ASK FRONT END ABOUT REROUTING BAD SIGN UP
-            return res.redirect('/LoginPage');
+            return res.redirect('http://localhost:8080/loginPage');
           } else {
             res.locals.loggedIn = doc;
             return next();
@@ -44,6 +44,8 @@ merchantControllers.verifyMerchant = (req, res, next) => {
 
 //const { password, email } = req.body;
 merchantControllers.createMerchant = (req, res, next) => {
+  console.log('ENTERING CREATE MERCHANT');
+  console.log('Merchant req body', req.body);
   const {
     merchantEmail,
     merchantPassword,
@@ -55,26 +57,27 @@ merchantControllers.createMerchant = (req, res, next) => {
     image,
   } = req.body;
 
-  try {
-    Merchant.create({
-      merchantEmail,
-      merchantPassword,
-      merchantName,
-      typeOfMerchant,
-      merchantAddress,
-      merchantZipCode,
-      description,
-      image,
+  Merchant.create({
+    merchantEmail,
+    merchantPassword,
+    merchantName,
+    typeOfMerchant,
+    merchantAddress,
+    merchantZipCode,
+    description,
+    image,
+  })
+    .then(() => {
+      console.log('LEAVING MERCHANT on successful creation of merchant');
+      return next();
+    })
+    .catch((err) => {
+      return next({
+        log: `Error occured in createMerchant middleware, ${err}`,
+        status: 400,
+        message: { err: 'An error occurred when creating merchant data' },
+      });
     });
-
-    return next();
-  } catch (err) {
-    return next({
-      log: `Error occured in createMerchant middleware, ${err}`,
-      status: 400,
-      message: { err: 'An error occurred when creating merchant data' },
-    });
-  }
 };
 
 //new getMerchants controller that requires review
