@@ -9,6 +9,7 @@ import Team from './Team';
 import AboutUs from './AboutUs'; 
 import UserInformation from './UserInformation'
 import merchantData from './merchantData';
+import axios from 'axios';
 
 function App() {
 
@@ -32,22 +33,6 @@ function App() {
     }
   }
 
-
-  // findOne session 
-
-  // useEffect(() => {
-  //   // axios get request to fetch all merchant data as an array object
-  //   // axios({
-  //   //   method: 'get',
-  //   //   url: 'INSERT URL TO GET ALL MERCHANTS',
-  //   // })
-  //   //   .then((responseData) => {
-  //   //     console.log('Merchants: ', responseData.data)
-  //   //     setMerchantData(responseData.data)
-  //   // })
-
-  //   setMerchantData(merchantData)
-  // }, [needMerchantData])
   // Routes defined below for pages 
   // Prop driling the props for email in User Information and Create Account
     // Should also be in login page but ran out of time 

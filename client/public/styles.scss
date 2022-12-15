@@ -103,6 +103,7 @@ section {
 
 body {
   line-height: 1;
+
 }
 
 ol,
@@ -295,6 +296,12 @@ table {
   margin-top: 7rem;
   text-align: center;
 
+  .innerAlign {
+    max-width: fit-content;
+    text-align: right;
+    margin: auto;
+  }
+
   .consMerchContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -319,6 +326,7 @@ table {
     #userInput {
       border-radius: 3px;
       height: 1.25rem;
+      align-content: center;
     }
   }
 
@@ -458,6 +466,21 @@ form {
   padding: 40px;
 }
 
+.teamHeader {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(77, 77, 77)
+}
+
+.teamBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 // styling for all four team photos
 .allTeamPhotos {
   padding-top: 70px;

@@ -83,7 +83,7 @@ merchantControllers.createMerchant = (req, res, next) => {
 //new getMerchants controller that requires review
 //does the front end want a hard limit on the number we send back, or are we good with an infinite front page scroll for all merchants?
 merchantControllers.getAllMerchants = (req, res, next) => {
-  console.log(`ENTERED getUsers: `);
+  console.log(`ENTERED getMerchants: `);
 
   Merchant.find()
     .then((docs) => {

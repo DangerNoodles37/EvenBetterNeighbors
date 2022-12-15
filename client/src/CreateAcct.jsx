@@ -39,7 +39,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
             {/* form for user */}
             {/* ADD STYLING CLASSNAMES BACK IN LATER */}
-
+<div className='innerAlign'>
             <form method='POST' action='http://localhost:3000/createUser'>
               <label htmlFor='firstName'>First Name: </label>
               <input type='text' name='firstName' id='firstName' />
@@ -64,6 +64,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
 
               <input id='formButton' type='submit' value='submit' />
             </form>
+            </div>
           </section>
 
           {/* merchant accoutn creation */}
@@ -82,7 +83,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
               <strong>Merchant</strong>
             </div>
             <br></br>
-
+<div className='innerAlign'>
             <form method='post' action='http://localhost:3000/createMerchant'>
               <label htmlFor='merchantEmail'>Email: </label>
               <input type='text' name='merchantEmail' id='merchantEmail' />
@@ -125,6 +126,7 @@ function CreateAcct({ setDefaultEmail, defaultEmail }) {
               <br />
               <br />
             </form>
+            </div>
           </div>
         </div>
       </div>

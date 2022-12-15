@@ -9,6 +9,86 @@ function Team() {
       </div>
 
       <div className='allTeamPhotos'>
+        <div className='teamBox'>
+        <div className='teamHeader'>CURRENT DEVELOPER TEAM</div>
+        <div className='zach'>
+          <img
+            className='teamPhoto'
+            src='https://i.imgur.com/W3fbp8y.png'
+          ></img>
+          <div className='teamText'>
+            <p>
+              Camille Salter  <br />
+              <br />
+              Backend Engineer & Tester
+            </p>
+            <a href='https://github.com/CamSalter'>Github</a>
+          </div>
+        </div>
+        <div className='zach'>
+          <img
+            className='teamPhoto'
+            src='https://i.imgur.com/TrzpIlP.png'
+          ></img>
+          <div className='teamText'>
+            <p>
+              Andrew Hogan <br />
+              <br />
+              Fullstack & Testing Engineer
+            </p>
+            <a href='https://github.com/andrewlallyhogan'>Github</a>
+          </div>
+        </div>
+        <div className='chase'>
+          <img
+            className='teamPhoto'
+            src='https://i.imgur.com/jCmd23c.png'
+          ></img>
+          <div className='teamText'>
+            <p>
+              Eshaan Joshi <br />
+              <br />
+              Frontend Engineer
+            </p>
+            <a href='https://github.com/eshaan32'>Github</a>
+          </div>
+        </div>
+
+        <div className='danny'>
+          <img
+            className='teamPhoto'
+            src='https://i.imgur.com/rb8rMhH.png'
+          ></img>
+          <div className='teamText'>
+            <p>
+              Greg Jenner <br />
+              <br />
+              Backend & Database Engineer
+            </p>
+            <a href='https://github.com/gregjenner'>Github</a>
+          </div>
+        </div>
+
+        <div className='sakura'>
+          <img
+            className='teamPhoto'
+            src='https://i.imgur.com/1XXAny6.png'
+          ></img>
+          <div className='teamText'>
+            <p>
+              Jason Goldman <br />
+              <br />
+              Fullstack Engineer
+            </p>
+            <a href='https://github.com/Trablink'>Github</a>
+          </div>
+        </div>
+        </div>
+      </div>
+      
+      <div className='allTeamPhotos'>
+        <div className='teamBox'>
+        <div className='teamHeader'>ORIGINAL DEVELOPERS</div>
         <div className='zach'>
           <img
             className='teamPhoto'
@@ -67,9 +147,11 @@ function Team() {
             </p>
             <a href='https://github.com/sakurakiyama'>Github</a>
           </div>
+          </div>
         </div>
       </div>
     </div>
+    
   );
 }
 
