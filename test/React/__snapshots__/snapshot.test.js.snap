@@ -173,7 +173,7 @@ exports[`CreateAcct component matches the snapshot 1`] = `
         </div>
         <br />
         <form
-          action="http://localhost:3000/api/createUser"
+          action="http://localhost:3000/createUser"
           method="POST"
         >
           <label
@@ -199,35 +199,35 @@ exports[`CreateAcct component matches the snapshot 1`] = `
           />
           <br />
           <label
-            htmlFor="userEmail"
+            htmlFor="email"
           >
             Email: 
           </label>
           <input
-            id="userEmail"
-            name="userEmail"
+            id="email"
+            name="email"
             type="text"
           />
           <br />
           <label
-            htmlFor="userPassword"
+            htmlFor="password"
           >
             Password: 
           </label>
           <input
-            id="userPassword"
-            name="userPassword"
+            id="password"
+            name="password"
             type="password"
           />
           <br />
           <label
-            htmlFor="userZipCode"
+            htmlFor="zipCode"
           >
             Zip Code: 
           </label>
           <input
-            id="userZipCode"
-            name="userZipCode"
+            id="zipCode"
+            name="zipCode"
             type="text"
           />
           <br />
@@ -251,16 +251,16 @@ exports[`CreateAcct component matches the snapshot 1`] = `
         <br />
         <form
           action="http://localhost:3000/createMerchant"
-          method="POST"
+          method="post"
         >
           <label
-            htmlFor="businessEmail"
+            htmlFor="merchantEmail"
           >
             Email: 
           </label>
           <input
-            id="businessEmail"
-            name="businessEmail"
+            id="merchantEmail"
+            name="merchantEmail"
             type="text"
           />
           <br />
@@ -276,46 +276,46 @@ exports[`CreateAcct component matches the snapshot 1`] = `
           />
           <br />
           <label
-            htmlFor="businessName"
+            htmlFor="merchantName"
           >
             Business Name: 
           </label>
           <input
-            id="businessName"
-            name="businessName"
+            id="merchantName"
+            name="merchantName"
             type="text"
           />
           <br />
           <label
-            htmlFor="typeOfBusiness"
+            htmlFor="typeOfMerchant"
           >
             Business Type: 
           </label>
           <input
-            id="typeOfBusiness"
-            name="typeOfBusiness"
+            id="typeOfMerchant"
+            name="typeOfMerchant"
             type="text"
           />
           <br />
           <label
-            htmlFor="businessAddress"
+            htmlFor="merchantAddress"
           >
              Address: 
           </label>
           <input
-            id="businessAddress"
-            name="businessAddress"
+            id="merchantAddress"
+            name="merchantAddress"
             type="text"
           />
           <br />
           <label
-            htmlFor="businessZipCode"
+            htmlFor="merchantZipCode"
           >
             Zip Code: 
           </label>
           <input
-            id="businessZipCode"
-            name="businessZipCode"
+            id="merchantZipCode"
+            name="merchantZipCode"
             type="text"
           />
           <br />
@@ -502,20 +502,21 @@ exports[`LoginPage component should match snapshot 1`] = `
         </div>
         <br />
         <form
+          action="http://localhost:3000/userLogin"
           className="userForm"
-          onSubmit={[Function]}
+          method="post"
         >
           <div
             className="userLogin"
           >
             <label
-              htmlFor="userEmailLogin"
+              htmlFor="email"
             >
               Email: 
             </label>
             <input
-              id="userEmailLogin"
-              name="userEmailLogin"
+              id="email"
+              name="email"
               type="text"
             />
           </div>
@@ -523,13 +524,13 @@ exports[`LoginPage component should match snapshot 1`] = `
             className="userPW"
           >
             <label
-              htmlFor="userPasswordLogin"
+              htmlFor="password"
             >
               Password: 
             </label>
             <input
-              id="userPasswordLogin"
-              name="userPasswordLogin"
+              id="password"
+              name="password"
               type="password"
             />
           </div>
@@ -553,20 +554,21 @@ exports[`LoginPage component should match snapshot 1`] = `
         </div>
         <br />
         <form
+          action="http://localhost:3000/merchantLogin"
           className="merchantForm"
-          onSubmit={[Function]}
+          method="post"
         >
           <div
             className="merchantUsername"
           >
             <label
-              htmlFor="merchantUsernameLogin"
+              htmlFor="memail"
             >
               Email: 
             </label>
             <input
-              id="merchantUsernameLogin"
-              name="merchantUsernameLogin"
+              id="memail"
+              name="memail"
               type="text"
             />
           </div>
@@ -574,19 +576,18 @@ exports[`LoginPage component should match snapshot 1`] = `
             className="merchantPassword"
           >
             <label
-              htmlFor="merchantPasswordLogin"
+              htmlFor="mpassword"
             >
               Password: 
             </label>
             <input
-              id="merchantPasswordLogin"
-              name="merchantPasswordLogin"
+              id="mpassword"
+              name="mpassword"
               type="password"
             />
           </div>
           <input
-            id="formButton"
-            name="merchantSubmit"
+            id="merchantFormButton"
             type="submit"
             value="submit"
           />
