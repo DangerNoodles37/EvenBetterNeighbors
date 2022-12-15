@@ -4,67 +4,19 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 function LoginPage(props) {
   const history = useHistory();
-  // USE USE NAVIGTE INSTEAD OF HISTORY
-  // const navigate = useNavigate()
-
-  // state for user values
-  const [userEmailLogin, setUserEmailLogin] = useState('');
-  const [userPasswordLogin, setUserPasswordLogin] = useState('');
-
-  // state for merchant values
-  const [merchantEmailLogin, setMerchantEmailLogin] = useState('');
-  const [merchantPasswordLogin, setMerchantPasswordLogin] = useState('');
-
-  // function handleUserLogin(event) {
-  //   // logic for users logging in should go here.
-  //   // currently redirects to landing page
-  //   event.preventDefault();
-  //   const userAuthBody = {
-  //     email: event.target[0].value,
-  //     password: event.target[1].value,
-  //   };
-
-  //   console.log('User Name Body We Are Sending to Back End: ', userAuthBody);
-  //   // make an axios post or get request to the URL connecting to auth stuff
-  //   axios({
-  //     method: 'post',
-  //     url: 'http://localhost:3000/userLogin',
-  //     withCredentials: true,
-  //     data: userAuthBody,
-  //   })
-  //     .then((responseData) => {
-  //       // props.setNeedMerchatData(props.needMerchantData)
-  //       console.log('Login Verified');
-  //     })
-  //     .catch((err) => {
-  //       console.log('Err in Login');
-  //     });
-  // in the .then, we need to fire a needMerchantData useState callback in order to fire a useEffect Hook which renders merchants
-  // props.setNeedMerchatData(props.needMerchantData);
-  //.catch((err) => {
-  //  redirect to login page
-  //
-
-  // })
-  // .then, redirect to the landing page USING THE USENAVIGATE HOOK
-  // history.push('/landing')
-
-  // function handleMerchantLogin() {
-  //   event.preventDefault();
-  //   // logic for merchants logging inHI THERE TRABLINK should go here
-  //   // create a new object containing the user email and password bodies
-  //   const merchantAuthBody = {
-  //     email: event.target[0].value,
-  //     password: event.target[1].value,
-  //   };
-
-  //   console.log(
-  //     'User Name Body We Are Sending to Back End: ',
-  //     merchantAuthBody
-  //   );
-  //   // axios({
-  //   // })
-  // }
+  
+  const handleLogin = () => {
+    console.log('hi')
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/allMerchants',
+    })
+      .then((responseData) => {
+        console.log(' All Merchants: ', responseData.data)
+        setMerchantData(responseData.data)
+    })
+    props.setNeedMerchantData(props.needMerchantData)
+  }
 
   return (
     <div>
@@ -74,6 +26,7 @@ function LoginPage(props) {
       </div>
       <div className='loginContainer'>
         {/* hold both user and merchant login */}
+        
         <div className='consMerchContainer'>
           {/* user login */}
           <div className='userLogin'>
@@ -82,7 +35,10 @@ function LoginPage(props) {
             </div>
             <br />
             {/* USER LOGIN FORM GOES HERE */}
+            
+            <div className='innerAlign'>
             <form
+              onSubmit={handleLogin}
               className='userForm'
               method='post'
               action='http://localhost:3000/userLogin'
@@ -130,6 +86,7 @@ function LoginPage(props) {
                 value='submit'
               />
             </form>
+            </div>
           </div>
 
           {/* MERCHANT LOGIN GOES HERE */}
@@ -138,7 +95,9 @@ function LoginPage(props) {
               <strong>Merchant</strong>
             </div>
             <br />
+            <div className='innerAlign'>
             <form
+              onSubmit={handleLogin}
               className='merchantForm'
               method='post'
               action='http://localhost:3000/merchantLogin'
@@ -181,7 +140,9 @@ function LoginPage(props) {
 
               <input id='merchantFormButton' type='submit' value='submit' />
             </form>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

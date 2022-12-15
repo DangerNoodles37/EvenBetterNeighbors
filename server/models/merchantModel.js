@@ -16,7 +16,6 @@ const merchantSchema = new mongoose.Schema({
     default: 'https://en.wiktionary.org/wiki/File:Cirila-%D0%9C-majuskla.svg',
   },
 });
-
 // await Merchant.create({
 //   merchantEmail,
 //   merchantPassword,
