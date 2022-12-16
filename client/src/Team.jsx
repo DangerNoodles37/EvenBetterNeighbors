@@ -14,7 +14,7 @@ function Team() {
         <div className='zach'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/W3fbp8y.png'
+            src='https://i.imgur.com/H0J9p3W.png'
           ></img>
           <div className='teamText'>
             <p>
@@ -57,7 +57,7 @@ function Team() {
         <div className='danny'>
           <img
             className='teamPhoto'
-            src='https://i.imgur.com/rb8rMhH.png'
+            src='https://i.imgur.com/GtrXNZl.png'
           ></img>
           <div className='teamText'>
             <p>

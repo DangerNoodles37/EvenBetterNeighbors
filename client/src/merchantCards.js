@@ -15,7 +15,7 @@ function MerchantCards(props) {
   // GET MERCHANT DATA FROM DATABASE
   if (props.searchZipcode.length === 5) {
     filteredData = props.merchantData.filter(
-      (el) => el.zipCode === props.searchZipcode
+      (el) => el.merchantZipCode === props.searchZipcode
     );
   }
 
